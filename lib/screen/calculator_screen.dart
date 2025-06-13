@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widget/calculator_btn.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -11,6 +12,8 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.blue,
         centerTitle: true,
         title: Text('Calculator' , style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold ,color: Colors.white),),),
+
+      body:HomeBody(),
     );
   }
 }
