@@ -90,3 +90,68 @@ class _HomeBodyState extends State<HomeBody> {
       ],
     );
   }
+
+  void onClickbutton(String text) {
+    result += text;
+    setState(() {});
+  }
+
+  void operatorNumbers(String operatorClicked){
+    if(operator.isEmpty){
+      lhs =result;
+    }else{
+      rhs = result;
+      lhs = calculate(lhs , operator ,rhs);
+    }
+    operator =operatorClicked;
+    result = '';
+
+    setState(() {
+
+    });
+  }
+
+  String calculate(String lhs, String operator, String rhs) {
+    double number1 =double.parse(lhs);
+    double number2 =double.parse(rhs);
+    double finalResult=0.0;
+
+    if(operator == '+'){
+      finalResult = number1 + number2;
+    }else if(operator == '-'){
+      finalResult = number1 - number2;
+    }else if(operator == '/'){
+      finalResult = number1 / number2;
+    }else if(operator == '*'){
+      finalResult = number1 * number2;
+    }else if(operator == '%'){
+      finalResult = number1 % number2;
+    }
+
+    return finalResult.toString();
+  }
+  void equalOperator(String equal){
+    rhs =result;
+    result = calculate(lhs, operator, rhs);
+    lhs= '';
+    operator = '';
+    setState(() {
+
+    });
+  }
+  void deleteNumbers(String number){
+    if(result.isNotEmpty){
+      result = result.substring(0 , result.length-1);
+      setState(() {
+
+      });
+    }
+  }
+  void deleteAll(String finalRes){
+    result = '';
+    setState(() {
+
+    });
+  }
+
+}
